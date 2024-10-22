@@ -6,42 +6,20 @@ import Navbar from "./components/Navbar.vue";
 <template>
   <Navbar :logo="logo_src" :alt="app_name" />
   <RouterView />
-  <div class="characters-container">
-    <div v-for="character in characters" :key="character.id" class="character">
-      <img :src="character.image" :alt="character.name" />
-      <h2>{{ character.name }}</h2>
-      <p>Status: {{ character.status }}</p>
-      <button @click="addToFavorites(character)">Add to Favorites</button>
-    </div>
-  </div>
   <Footer />
 </template>
 
 <script>
-import Footer from "./components/Footer.vue";
-import Navbar from "./components/Navbar.vue";
-
 export default {
-  components: {
-    Navbar,
-    Footer,
-  },
   data() {
     return {
-      favorites: [],
-      characters: [],
-      logo_src: "/public/img/rickandmorty.png",
-      app_name: "Rick And Morty",
+      logo_src: "../public/img/rickandmorty.png",
+      app_name: "Rick and Morty Explorer",
     };
   },
-  mounted() {
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((Response) => Response.json())
-      .then((data) => {
-        this.characters = data.results;
-      });
-  },
 };
+import Footer from "./components/Footer.vue";
+import Navbar from "./components/Navbar.vue";
 </script>
 <style>
 * {

@@ -4,7 +4,7 @@
       <img :src="logo" :alt="alt" id="logo" />
     </RouterLink>
     <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">Favoritos</RouterLink>
+    <RouterLink to="/favorites">Favoritos</RouterLink>
   </div>
 </template>
 <script>

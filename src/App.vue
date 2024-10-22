@@ -59,16 +59,17 @@ h1 {
 }
 
 button {
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #42b983;
+  background-color: #4caf50;
   color: white;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
 }
+
 button:hover {
-  background-color: #2b8c6d;
+  background-color: #45a049;
 }
 
 footer {

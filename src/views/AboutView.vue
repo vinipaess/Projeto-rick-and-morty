@@ -1,9 +1,6 @@
 <template>
   <div class="main-container" />
   <h1>Favoritos</h1>
-  <button @click="removeFromFavorites(favorite.id)">
-    Remove from Favorites
-  </button>
   <div v-if="favorites.length > 0" class="favorites-container">
     <div
       v-for="favorite in favorites"
@@ -14,6 +11,9 @@
       <h2>{{ favorite.name }}</h2>
       <p>Status: {{ favorite.status }}</p>
       <p>Gender: {{ favorite.gender }}</p>
+      <button @click="removeFromFavorites(favorite.id)">
+        Remove from Favorites
+      </button>
     </div>
   </div>
   <div v-else>
@@ -29,14 +29,13 @@ export default {
     };
   },
   name: "FavoritesView",
-  computed: {
-    favoriteCharacters() {
-      return this.$store.state.favoriteCharacters;
-    },
-  },
   methods: {
     removeFromFavorites(id) {
-      this.$store.commit("REMOVE_FROM_FAVORITES", id);
+      const exists = this.favorites.some((fav) => fav.id === id);
+      if (exists) {
+        this.favorites = this.favorites.filter((fav) => fav.id !== id);
+        localStorage.setItem("favorites", JSON.stringify(this.favorites)); 
+      }
     },
   },
 };
@@ -46,7 +45,7 @@ export default {
 .favorites-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .favorite-character {
